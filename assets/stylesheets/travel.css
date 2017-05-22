@@ -2,17 +2,35 @@
 Choose a font from google fonts to use for the text in the hero
 and use @import to include in this style sheet. The font in the image is "Bangers"
 */
+@import url('https://fonts.googleapis.com/css?family=Bangers');
 
+* {
+  /*border: 1px red dashed;*/
+}
 
+#hero {
+  font-family: 'Bangers', cursive;
+}
 /*
-- make the masthead a flexbox container
-- make sure the logo displays on the left and the navigation displays on the right using flexbox
-- make sure that the navigation can drop below the logo when the page shrinks using flexbox
-- make sure the content is vertically centered in the masthead using flexbox
-- using the position property, make sure the navigation stays fixed to the top when scrolling
-- when scrolling make sure there is no gap between the masthead and top of the page
+- > make the masthead a flexbox container
+- > make sure the logo displays on the left and the navigation displays on the right using flexbox
+- > make sure that the navigation can drop below the logo when the page shrinks using flexbox
+- > make sure the content is vertically centered in the masthead using flexbox
+- > using the position property, make sure the navigation stays fixed to the top when scrolling
+- > when scrolling make  sure there is no gap between the masthead and top of the page
 */
+#masthead {
+  display: flex; /* makes this a flex container */
+  justify-content: space-between; /* only two items, force one right anmd one left */
+  align-items: center; /* centers on the y-axis w/in the element */
+  flex-wrap: wrap; /* pushed links below text */
+  position: fixed; /* fixes the position w/o scrolling */
+  top: 0; /* zero gap to the top */
+}
 
+#nav-link {
+  /*justify-content: flex-end;*/
+}
 
 /*
 - make the hero div a flexbox container
@@ -24,6 +42,14 @@ and use @import to include in this style sheet. The font in the image is "Banger
 - adjust the top margin of the hero to account for the fixed masthead
 */
 
+#hero {
+  display: flex; /* makes this a flex container */
+  flex-direction: column; /* aligns the heading in a column */
+  margin-top: 98px; /* brings the hero container down below the masthead */
+  align-items: center;
+  justify-content: center;
+  text-shadow: 2px 2px black;
+}
 
 /*
 - Make the cards div a flexbox container
@@ -31,7 +57,13 @@ and use @import to include in this style sheet. The font in the image is "Banger
 - reverse the order of the cards using flexbox (should become chili aruna italy spain)
 - make sure when the page shrinks the cards wrap and stack on eachother
 */
-
+#cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; /* pushed links below text */
+  flex-direction: row-reverse;
+}
 
 /*
 - Make each individual card a flexbox container
@@ -41,6 +73,12 @@ and use @import to include in this style sheet. The font in the image is "Banger
   (there is bottom padding applied in common.css to keep it off the very bottom so it looks right)
 */
 
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
 
 /*
 - Make the travel table div a flexbox container
@@ -48,20 +86,46 @@ and use @import to include in this style sheet. The font in the image is "Banger
 - make sure the content is centered in each card using flexbox
 */
 
+#travel-table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*tr {
+  display: flex;
+  justify-content: center;
+}*/
 
 /*
 - Make the footer div a flexbox container
 - make sure the copyright displays on the left and the social links display on the right using flexbox
 - make sure the content is vertically centered in the here div using flexbox
 */
-
+#footer {
+  display: flex;
+  justify-content: space-between; /* only two items, force one right anmd one left */
+  align-items: center;
+}
 
 /*
 MEDIUM CHALLENGE:
-Using media queries, hide the national bird column in the table when the screen is at a 
+Using media queries, hide the national bird column in the table when the screen is at a
 max width of 800px. Hide both the national bird and population column when the
 screen is at a max width of 600px
 
 HINT:
-leverage the classes .bird and .population 
+leverage the classes .bird and .population
 */
+@media only screen and (max-width: 800px) {
+  .bird {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .bird, .population {
+    display: none;
+  }
+}
